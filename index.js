@@ -12,7 +12,7 @@ const app = express()
 app.use(express.json())
 
 app.use(cors({
-    // origin: "https://portfolio-uueg.onrender.com"
+    origin: "https://portfolio-uueg.onrender.com"
 }))
 app.use(express.static(path.join(__dirname, "dist")))
 
