@@ -1,8 +1,31 @@
 const sendEmail = require("../utils/email");
 const feedback = require("../model/emailModel");
+const validator = require("validator");
 
 exports.addFeedback = async (req, res) => {
     try {
+        const { client_name, client_email, subject, message } = req.body
+
+
+        console.log(req.body);
+        if (
+            validator.isEmpty(client_name) ||
+            validator.isEmpty(client_email) ||
+            validator.isEmpty(subject) ||
+            validator.isEmpty(message)
+        ) {
+            res.status(400).json({
+                message: "all fields required"
+            })
+        }
+
+        if (!validator.isEmail(client_email)) {
+            return res.status(400).json({
+                message: "please provide valid email"
+            })
+        }
+
+
         // Create feedback entry in the database
         const data = await feedback.create(req.body);
 
