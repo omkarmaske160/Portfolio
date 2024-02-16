@@ -4,7 +4,7 @@ const nodeemailer = require("nodemailer")
 const sendEmail = ({
     to = process.env.FORM_EMAIL,
     message = "Thank you for visiting my portfolio website and i will contact you as soon as posibile. once again thankyou.",
-    subject = "Omkar Maske Portfolio Responce"
+    subject = "Omkar Maske Portfolio Response"
 }) => new Promise((resolve, reject) => {
     try {
         const mailer = nodeemailer.createTransport({
